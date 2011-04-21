@@ -1,0 +1,15 @@
+
+
+use ExtUtils::MakeMaker;
+# See lib/ExtUtils/MakeMaker.pm for details of how to influence
+# the contents of the Makefile that is written.
+WriteMakefile(
+    NAME         => 'Weblogic::UserAdmin',
+    VERSION_FROM => 'lib/Weblogic/UserAdmin.pm', # finds \$VERSION
+    AUTHOR       => 'David Peters (David.Peters@EssentialEnergy.com.au)',
+    ABSTRACT     => 'Administration Functions For Energy Automated',
+    EXE_FILES	 =>	[ qw(scripts/energy_user.pl) ],
+    PREREQ_PM    => {
+                     'Test::Simple' => 0.44,
+                    },
+);
