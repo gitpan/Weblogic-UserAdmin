@@ -2,11 +2,38 @@ package Weblogic::UserAdmin;
 
 use WWW::Mechanize;
 use strict;
+use warnings;
+
+
+=head1 NAME
+
+Weblogic::UserAdmin - Administration Functions For Weblogic 8.1 Automated
+
+=head1 SYNOPSIS
+
+  use Weblogic::UserAdmin;
+  
+  my $Weblogic = Weblogic::UserAdmin->new({
+				console=>"http://$server", 
+				port => $port,
+				username => "system",
+				password => "leper",
+			});
+  	
+  if($Weblogic->user_exist($user)) {
+	print "User Already Exists\n";
+	exit 1;
+  };		
+
+  $Weblogic->user_add({user=>$user, password=>$password});
+=cut
+
+
 
 BEGIN {
     use Exporter ();
     use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-    $VERSION     = '0.04';
+    $VERSION     = '0.05';
     @ISA         = qw(Exporter);
     #Give a hoot don't pollute, do not export more than needed by default
     @EXPORT      = qw();
@@ -16,6 +43,20 @@ BEGIN {
 
 
 
+
+=head1 DESCRIPTION
+	
+
+=head2  my $Weblogic = Weblogic::UserAdmin->new({
+				console=>"http://$server", 
+				port => $port,
+				username => "system",
+				password => "leper",
+			});
+
+    Create and login to server object specifying host port system username 
+    and password. Returns Weblogic::UserAdmin object.
+=cut
 
 sub new
 {
@@ -34,7 +75,10 @@ sub new
 }
 
 
-
+=head2 users
+	  
+    Return an array of all usernames from the server.
+=cut
 
 sub users 
 {
@@ -65,9 +109,11 @@ sub users
 	
 }
 
-##
-## does a user exist
-##
+=head2 user_exist('username')
+
+Checks if a user exists 
+
+=cut
 sub user_exist 
 {
 	my ($self, $user) = @_;
@@ -91,9 +137,12 @@ sub user_exist
 	
 }
 
-##
-## add users
-##
+=head2 user_add({user=>$user, password=>$userpassword});
+
+    Add user specifying username and password.
+
+=cut
+
 sub user_add {
 	my $self = shift;
 	my $parm = shift;
@@ -121,6 +170,12 @@ sub user_add {
     	
 }
 
+=head2 group_list
+
+Lists all groups - returned as an array 
+
+=cut
+
 sub group_list {
 	
 	my $self = shift;
@@ -138,9 +193,12 @@ sub group_list {
 	return split /\s/, $page
 }
 
-##
-## user add group
-##
+=head2 user_add_group({user=>$user, group=>$groupname})
+  
+    Add the specified user to the specified group.
+
+=cut
+
 sub user_add_group {
 	
 	my $self = shift;
@@ -168,9 +226,12 @@ sub user_add_group {
     
 }
 
-##
-## del users
-##
+=head2 user_del({user=>$user})
+  
+    Delete user. USer is automagically removed from group.
+=cut
+    
+
 sub user_del {
 	my $self = shift;
 	my $parm = shift;
@@ -268,71 +329,18 @@ sub _loginConsole
 }
 
 
+
 sub DESTROY {
 	my $self = shift;
-	$self->{browser}->delete;
+	$self->{browser} = undef;
 }
 
-#################### main pod documentation begin ###################
-## Below is the stub of documentation for your module. 
-## You better edit it!
 
 
-=head1 NAME
 
-Weblogic::UserAdmin - Administration Functions For Weblogic 8.1 Automated
 
-=head1 SYNOPSIS
 
-  use Weblogic::UserAdmin;
-  
-  my $Weblogic = Weblogic::UserAdmin->new({
-				console=>"http://$server", 
-				port => $port,
-				username => "system",
-				password => "leper",
-			});
-  	
-  if($Weblogic->user_exist($user)) {
-	print "User Already Exists\n";
-	exit 1;
-  };		
-
-  $Weblogic->user_add({user=>$user, password=>$password});
-
-=head1 DESCRIPTION
-
-  my $Weblogic = Weblogic::UserAdmin->new({
-				console=>"http://$server", 
-				port => $port,
-				username => "system",
-				password => "leper",
-			});
-
-    Create and login to server object specifying host port system username 
-    and password. Returns Weblogic::UserAdmin object.
-
-  $Weblogic->user_add({user=>$user, password=>$userpassword});
-
-    Add user specifying username and password.
-
-  $Weblogic->user_add_group({group=>$groupname, user=>$usergroup})
-  
-    Add user to specified group.
     
-  $Weblogic->user_del({user=>$user})
-  
-    Delete user. USer is automagically removed from group.
-    
-  $Weblogic->user_add_group({user=>$user, group=>$groupname})
-  
-    Add the specified user to the specified group.
-    
-  my @users = $Weblogic->users();
-  
-    Return an array of all usernames from the server;
-  
-
 
 =head1 AUTHOR
 

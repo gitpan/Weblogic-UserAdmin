@@ -4,9 +4,9 @@
 
 use Test::More tests => 2;
 
-BEGIN { use_ok( 'Energy::UserAdmin' ); }
+BEGIN { use_ok( 'Weblogic::UserAdmin' ); }
 
-my $object = Energy::UserAdmin->new ();
-isa_ok ($object, 'Energy::UserAdmin');
+my $object = Weblogic::UserAdmin->new ({username=>'test',password=>'test'});
+isa_ok ($object, 'Weblogic::UserAdmin');
 
 

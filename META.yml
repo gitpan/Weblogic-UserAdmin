@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Weblogic-UserAdmin
-version:            0.04
+version:            0.05
 abstract:           Administration Functions For Weblogic 8.1 Automated
 author:
     - David Peters (David.Peters@EssentialEnergy.com.au)
@@ -11,8 +11,10 @@ configure_requires:
 build_requires:
     ExtUtils::MakeMaker:  0
 requires:
-    Test::Simple:    0.44
-    WWW::Mechanize:  1.66
+    Test::Distribution:  0.01
+    Test::Simple:        0.44
+    Test::Strict:        0.01
+    WWW::Mechanize:      1.66
 no_index:
     directory:
         - t

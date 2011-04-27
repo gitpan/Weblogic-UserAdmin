@@ -11,6 +11,9 @@ WriteMakefile(
    # EXE_FILES	 =>	[ qw(scripts/energy_user.pl) ],
     PREREQ_PM    => {
                      'Test::Simple' => 0.44,
+                     'Test::Strict' => 0.01,
+                     'Test::Distribution' => 0.01,
                      'WWW::Mechanize' => 1.66,
+                     	
     				}
 );
