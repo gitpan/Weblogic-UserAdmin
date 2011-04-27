@@ -1,13 +1,12 @@
 package Weblogic::UserAdmin;
 
 use WWW::Mechanize;
-use Data::Dumper;
 use strict;
 
 BEGIN {
     use Exporter ();
     use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-    $VERSION     = '0.03';
+    $VERSION     = '0.04';
     @ISA         = qw(Exporter);
     #Give a hoot don't pollute, do not export more than needed by default
     @EXPORT      = qw();
@@ -281,7 +280,7 @@ sub DESTROY {
 
 =head1 NAME
 
-Weblogic::UserAdmin - Administration Functions For Weblogic Automated
+Weblogic::UserAdmin - Administration Functions For Weblogic 8.1 Automated
 
 =head1 SYNOPSIS
 

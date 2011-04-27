@@ -6,5 +6,4 @@ Changes
 Makefile.PL
 lib/Weblogic/UserAdmin.pm
 t/001_load.t
-scripts/energy_user.pl
 META.yml                                 Module meta-data (added by MakeMaker)
