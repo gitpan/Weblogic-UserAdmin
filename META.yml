@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Weblogic-UserAdmin
-version:            0.05
+version:            1.02
 abstract:           Administration Functions For Weblogic 8.1 Automated
 author:
     - David Peters (David.Peters@EssentialEnergy.com.au)

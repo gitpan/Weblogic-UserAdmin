@@ -8,7 +8,7 @@ WriteMakefile(
     VERSION_FROM => 'lib/Weblogic/UserAdmin.pm', # finds \$VERSION
     AUTHOR       => 'David Peters (David.Peters@EssentialEnergy.com.au)',
     ABSTRACT     => 'Administration Functions For Weblogic 8.1 Automated',
-   # EXE_FILES	 =>	[ qw(scripts/energy_user.pl) ],
+    EXE_FILES	 =>	[ qw(scripts/energy_user_multi.pl) ],
     PREREQ_PM    => {
                      'Test::Simple' => 0.44,
                      'Test::Strict' => 0.01,

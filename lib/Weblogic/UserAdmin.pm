@@ -33,7 +33,7 @@ Weblogic::UserAdmin - Administration Functions For Weblogic 8.1 Automated
 BEGIN {
     use Exporter ();
     use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-    $VERSION     = '0.05';
+    $VERSION     = '1.02';
     @ISA         = qw(Exporter);
     #Give a hoot don't pollute, do not export more than needed by default
     @EXPORT      = qw();
@@ -63,6 +63,13 @@ sub new
     my ($class, $parameters) = @_;
 
     my $self = bless ({}, ref ($class) || $class);
+	
+	
+
+	
+	
+	
+	
 	
 	$self->{console} = $parameters->{console}; 
 	$self->{port} = $parameters->{port};
@@ -327,6 +334,7 @@ sub _loginConsole
     
 	return $page;
 }
+
 
 
 
